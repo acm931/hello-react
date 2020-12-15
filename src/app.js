@@ -27,6 +27,17 @@ class BooksApp extends React.Component {
             }
         })
     }
+    borrarUnLibro(tituloABorrar){
+        console.log('Borrar un libro');
+        this.setState((estadoPrevio) =>{
+            return {
+                books: estadoPrevio.books.filter((book)=>{
+                    return book.title !== tituloABorrar
+                })
+            }
+        })
+    }
+
     introducirLibro(nuevoLibro) {
 
         if (!nuevoLibro.title) {
@@ -106,7 +117,7 @@ class Book extends React.Component {
     render() {
         return (
             <li>
-                {this.props.titulo} / {this.props.autor}
+                {this.props.titulo} / {this.props.autor} <button onClick={props.borrarUnLibro(props.titulo)}>Borrar</button>
             </li>
         )
     }
